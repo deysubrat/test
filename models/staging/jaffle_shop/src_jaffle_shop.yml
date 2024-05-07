@@ -15,4 +15,27 @@ sources:
             count: 24
             period: hour
         
+models:
+  - name: stg_customer
+    columns:
+      - name: customer_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values:
+                - shipped
+                - returned
+                - completed
+                - return_pending
+                - placed
+              
         
